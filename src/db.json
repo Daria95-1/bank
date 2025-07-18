@@ -1,0 +1,23 @@
+{
+  "users": [
+    {
+      "id": "8c59",
+      "login": "daria",
+      "password": "qwer1234",
+      "role_id": 1
+    },
+    {
+      "id": "f8d3",
+      "login": "Daria2",
+      "password": "qwer1234",
+      "role_id": 1
+    },
+    {
+      "id": "00ab",
+      "login": "daria3",
+      "password": "qwer1234",
+      "role_id": 1
+    }
+  ],
+  "sessions": []
+}

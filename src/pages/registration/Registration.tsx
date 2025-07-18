@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { Formik, Form, Field, type FormikHelpers } from 'formik'
@@ -8,7 +8,7 @@ import { errorText, formWrapper, submitButton, title } from './Registration.styl
 import { ROLE } from '@/shared/const/role'
 import { RoutesConf } from '@/app/core/enums/routes.enums'
 import { regFormSchema } from '@/app/core/schemas'
-import { useAuthSubmit } from '@/shared/hooks/use-auth-submit'
+import { useAuthSubmit } from '@/shared/hooks/UseAuthSubmit'
 import { selectUserRole } from '@/app/core/redux/slice.ts/user-slice'
 
 type FormData = {
@@ -25,9 +25,11 @@ export const Registration = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
-  if (roleId !== ROLE.GUEST) {
-    return navigate(`/${RoutesConf.main}`)
-  }
+  useEffect(() => {
+    if (roleId !== ROLE.GUEST) {
+        navigate(`/${RoutesConf.main}`, { replace: true })
+    }
+  }, [roleId, navigate])
 
   const handleFormSubmit = (
     values: FormData,

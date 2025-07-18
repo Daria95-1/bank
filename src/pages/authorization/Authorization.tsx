@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { Formik, Form, Field, type FormikHelpers } from 'formik'
@@ -13,10 +13,12 @@ import {
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { errorText, formWrapper, submitButton, title } from './Authorization.style'
 import { authFormSchema } from '@/app/core/schemas'
-import { useAuthSubmit } from '@/shared/hooks/use-auth-submit'
+import { useAuthSubmit } from '@/shared/hooks/UseAuthSubmit'
 import { selectUserRole } from '@/app/core/redux/slice.ts/user-slice'
 import { RoutesConf } from '@/app/core/enums/routes.enums'
 import { ROLE } from '@/shared/const/role'
+
+// json-server --watch src/db.json --port 3000
 
 type FormData = {
   login: string
@@ -30,9 +32,11 @@ export const Authorization = () => {
 
   const [showPassword, setShowPassword] = useState(false)
 
-  if (roleId !== ROLE.GUEST) {
-    return navigate(`/${RoutesConf.main}`)
-  }
+  useEffect(() => {
+    if (roleId !== ROLE.GUEST) {
+      navigate(`/${RoutesConf.main}`, { replace: true })
+    }
+  }, [roleId, navigate])
 
   const handleFormSubmit = (
     values: FormData,

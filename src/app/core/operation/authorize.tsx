@@ -1,21 +1,27 @@
-import { getUser } from '../api/get-user'
+import { usersApi } from '../api/endpoints/api.users'
 import { sessions } from '../sessions'
+import { store } from '../redux/store'
 
 type AuthorizeResponse = {
-    error?: string
-    res?: {
-        id?: number
-        login?: string
-        roleId?: string
-        session?: string
-    }
+  error?: string
+  res?: {
+    id: number
+    login: string
+    roleId: string
+    session: string
+  }
 }
 
 export const authorize = async (
     authLogin: string,
     authPassword: string
 ): Promise<AuthorizeResponse> => {
-    const user = await getUser(authLogin)
+    const getUserByLogin = usersApi.endpoints.getUserByLogin.initiate
+
+    const user = await store
+        .dispatch(getUserByLogin(authLogin))
+        .unwrap()
+        .catch(() => null)
 
     if (!user) {
         return {
@@ -24,7 +30,7 @@ export const authorize = async (
         }
     }
 
-    const { id, login, password, roleId } = user
+    const { id, login, password, role_id } = user
 
     if (authPassword !== password) {
         return {
@@ -33,13 +39,19 @@ export const authorize = async (
         }
     }
 
+    const sessionHash = await sessions.create({
+        id,
+        login,
+        roleId: role_id,
+    })
+
     return {
         error: undefined,
         res: {
             id,
             login,
-            roleId,
-            session: sessions.create(user),
+            roleId: role_id,
+            session: sessionHash,
         },
     }
 }
