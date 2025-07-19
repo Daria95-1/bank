@@ -19,9 +19,18 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
+    "erasableSyntaxOnly": false,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@core/*": ["src/app/core/*"],
+      "@pages/*": ["src/pages/*"],
+      "@shared/*": ["src/shared*"],
+      "@widgets/*": ["src/widgets/*"],
+    },
+    "types": ["vite/client"]
   },
   "include": ["src"]
 }
