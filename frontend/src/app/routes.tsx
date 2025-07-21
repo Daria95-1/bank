@@ -1,8 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { RoutesConf } from './core/enums/routes.enums'
 import { App } from './App'
-import { Registration } from '@/pages/registration/Registration'
-import { Authorization } from '@/pages/authorization/Authorization'
+import { Registration } from '@/pages/auth/Registration'
+import { Authorization } from '@/pages/auth/Authorization'
+import { Main } from '@/pages/main/Main'
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ export const router = createBrowserRouter([
       {
         path: RoutesConf.sign_in,
         element: <Authorization />,
+      },
+      {
+        path: RoutesConf.main,
+        element: <Main />,
       },
     ],
   },
