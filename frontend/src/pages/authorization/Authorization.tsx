@@ -11,7 +11,7 @@ import {
   Box,
 } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
-import { errorText, formWrapper, submitButton, title } from './Authorization.style'
+import { errorText, formWrapper, title } from './Authorization.style'
 import { authFormSchema } from '@/app/core/schemas'
 import { useAuthSubmit } from '@/shared/hooks/UseAuthSubmit'
 import { selectUserRole } from '@/app/core/redux/slice.ts/user-slice'
@@ -115,7 +115,6 @@ export const Authorization = () => {
               variant="contained"
               color="primary"
               fullWidth
-              sx={submitButton}
             >
               Войти
             </Button>

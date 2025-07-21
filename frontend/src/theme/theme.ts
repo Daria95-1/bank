@@ -4,10 +4,13 @@ export const theme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#1A237E',
+      main: '#000799',
+      light: '#00067C',
+      dark: '#00045E'
     },
     secondary: {
-      main: '#00BCD4',
+      main: '#00BCDF',
+      light: '#00D3A1'
     },
     background: {
       default: '#ECEFF1',
@@ -18,10 +21,13 @@ export const theme = createTheme({
       secondary: '#757575',
     },
     success: {
-      main: '#4CAF50',
+      main: '#008b6e',
     },
     error: {
-      main: '#E53935',
+      main: '#ff002a',
+    },
+    gradients: {
+      primary: 'linear-gradient(90deg, #00bcdf 0%, #00d3a1 100%)',
     },
   },
   typography: {
