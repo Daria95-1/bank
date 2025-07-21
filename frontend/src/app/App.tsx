@@ -1,20 +1,17 @@
-import { useNavigate, Outlet } from 'react-router-dom'
-import { RoutesConf } from '@core/enums/routes.enums'
-import './App.css'
+import { Outlet } from 'react-router-dom'
+import { Header } from '@/widgets/header/Header'
+import { Box } from '@mui/material'
+import { ContainerStyle } from './App.style'
+import { Footer } from '@/widgets/footer/Footer'
 
 export const App = () => {
-  const navigate = useNavigate()
-
-  const handlerToReg = () => {
-    navigate(`/${RoutesConf.sign_up}`)
-  }
-
   return (
-    <>
-      <div className="card">
-        <button onClick={handlerToReg}>Зарегистрироваться</button>
-      </div>
+    <Box sx={ContainerStyle}>
+      <Header />
+      
       <Outlet />
-    </>
+
+      <Footer />
+    </Box>
   )
 }
