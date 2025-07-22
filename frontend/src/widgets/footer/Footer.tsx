@@ -43,7 +43,7 @@ export const Footer = () => {
       <Box sx={ContainerStyle}>
         <Box sx={ContentStyle}>
           <Socials />
-          <Typography>© 2025, АО «Банк», официальный сайт</Typography>
+          <Typography>© Официальный сайт несуществуещего АО «Банк», 2025</Typography>
         </Box>
       </Box>
     </Box>

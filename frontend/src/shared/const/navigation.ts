@@ -14,7 +14,7 @@ const nav_header: NavModel[] = [
   },
   {
     id: 3,
-    url: RoutesConf.deposits,
+    url: `/${RoutesConf.user_deposits}/${RoutesConf.all_deposits}`,
     name: "Вклады",
   },
   {
@@ -47,12 +47,12 @@ const nav_footer: NavModel[] = [
   },
   {
     id: 3,
-    url: RoutesConf.deposits,
+    url: `/${RoutesConf.user_deposits}/${RoutesConf.all_deposits}`,
     name: "Вклады",
   },
   {
     id: 4,
-    url: RoutesConf.deposits,
+    url: RoutesConf.currency,
     name: "Курс валют",
   },
   {

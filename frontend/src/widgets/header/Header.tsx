@@ -32,11 +32,6 @@ export const Header = () => {
   const open = Boolean(anchorEl);
 
   const [deleteSession] = useDeleteSessionMutation();
-  //   if (personalInfo && isAuth && sessionId !== undefined) {
-  //     const updatedUser = { ...personalInfo, sessionId };
-  //     LocalStorage.onSetUser(updatedUser);
-  //   }
-  // }, [personalInfo, isAuth, sessionId]);
 
   useEffect(() => {
     if (personalInfo && isAuth && sessionId !== undefined && sessionId !== null) {
@@ -56,18 +51,6 @@ export const Header = () => {
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
-  //   if (sessionId !== undefined) {
-  //     try {
-  //       await deleteSession(sessionId).unwrap();
-  //     } catch (error) {
-  //       console.error('Ошибка при удалении сессии:', error);
-  //     }
-  //   }
-      
-  //   LocalStorage.onRemoveUser();
-  //   handleMenuClose();
-  //   navigate(`/${RoutesConf.sign_in}`);
-  // };
 
   const handleLogout = async () => {
     if (sessionId !== undefined) {
