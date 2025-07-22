@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { usersApi } from '../api/endpoints/api.users';
 import { sessionsApi } from '../api/endpoints/api.sessions';
-import { userReducer } from './slice.ts/user-slice';
+import { userReducer } from './slice/userSlice';
 
 export const store = configureStore({
     reducer: {

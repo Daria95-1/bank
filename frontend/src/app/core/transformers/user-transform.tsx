@@ -1,5 +1,5 @@
-export type User = {
-    id: number
+export type TransformedUser = {
+    id: number | string | null
     login: string
     password?: string
     roleId: string
@@ -12,7 +12,7 @@ export type DbUser = {
     role_id: string
 }
 
-export const userTransform = (dbUser: DbUser): User => ({
+export const userTransform = (dbUser: DbUser): TransformedUser => ({
     id: dbUser.id,
     login: dbUser.login,
     password: dbUser.password,

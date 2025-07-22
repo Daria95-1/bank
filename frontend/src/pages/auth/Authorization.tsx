@@ -11,12 +11,12 @@ import {
   Box,
 } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
-import { errorText, formWrapper, title } from './Authorization.style'
+import { formWrapper, LinkStyle, title } from './Auth.style'
 import { authFormSchema } from '@/app/core/schemas'
-import { useAuthSubmit } from '@/shared/hooks/UseAuthSubmit'
-import { selectUserRole } from '@/app/core/redux/slice.ts/user-slice'
 import { RoutesConf } from '@/app/core/enums/routes.enums'
 import { ROLE } from '@/shared/const/role'
+import { selectUserRole } from '@/app/core/redux/slice/userSlice'
+import { useAuthSubmit } from '@/shared/hooks/use-auth-submit'
 
 // json-server --watch src/db.json --port 3000
 
@@ -28,7 +28,7 @@ type FormData = {
 export const Authorization = () => {
   const navigate = useNavigate()
   const roleId = useSelector(selectUserRole)
-  const { onSubmit, serverError, clearServerError } = useAuthSubmit(false)
+  const { onSubmit, clearServerError } = useAuthSubmit(false)
 
   const [showPassword, setShowPassword] = useState(false)
 
@@ -43,6 +43,10 @@ export const Authorization = () => {
     formikHelpers: FormikHelpers<FormData>
   ) => {
     onSubmit(values, formikHelpers.resetForm)
+  }
+
+  const handleToReg = () => {
+    navigate(`/${RoutesConf.sign_up}`)
   }
 
   return (
@@ -104,12 +108,6 @@ export const Authorization = () => {
               }}
             />
 
-            {(serverError || errors.login || errors.password) && (
-              <Typography sx={errorText}>
-                {serverError || errors.login || errors.password}
-              </Typography>
-            )}
-
             <Button
               type="submit"
               variant="contained"
@@ -118,6 +116,10 @@ export const Authorization = () => {
             >
               Войти
             </Button>
+
+            <Box sx={LinkStyle} onClick={handleToReg}>
+              Зарегистрироваться
+            </Box>
           </Form>
         </Box>
       )}

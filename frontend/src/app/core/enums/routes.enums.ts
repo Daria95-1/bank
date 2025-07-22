@@ -9,4 +9,8 @@ export enum RoutesConf {
     contacts = "contacts",
     news = "news",
     cards = "cards",
+    accounts = "accounts",
+    profile = "profile",
 } 
+
+

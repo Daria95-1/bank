@@ -4,12 +4,12 @@ import { useNavigate } from 'react-router-dom'
 import { Formik, Form, Field, type FormikHelpers } from 'formik'
 import { TextField, Button, Typography, IconButton, InputAdornment, Box } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
-import { errorText, formWrapper, submitButton, title } from './Registration.style'
+import { errorText, formWrapper, LinkStyle, title } from './Auth.style'
 import { ROLE } from '@/shared/const/role'
 import { RoutesConf } from '@/app/core/enums/routes.enums'
 import { regFormSchema } from '@/app/core/schemas'
-import { useAuthSubmit } from '@/shared/hooks/UseAuthSubmit'
-import { selectUserRole } from '@/app/core/redux/slice.ts/user-slice'
+import { selectUserRole } from '@/app/core/redux/slice/userSlice'
+import { useAuthSubmit } from '@/shared/hooks/use-auth-submit'
 
 type FormData = {
   login: string
@@ -36,7 +36,11 @@ export const Registration = () => {
     formikHelpers: FormikHelpers<FormData>,
   ) => {
     onSubmit(values, formikHelpers.resetForm)
-  }
+    }
+    
+    const handleToAuth = () => {
+        navigate(`/${RoutesConf.sign_in}`)
+    }
 
   return (
     <Formik
@@ -135,12 +139,15 @@ export const Registration = () => {
                     variant="contained"
                     color="primary"
                     fullWidth
-                    sx={submitButton}
                 >
                     Зарегистрироваться
                 </Button>
-                </Form>
-            </Box>
+                      
+                <Box sx={LinkStyle} onClick={handleToAuth}>
+                Войти
+                </Box>
+            </Form>
+        </Box>
       )}
     </Formik>
   )

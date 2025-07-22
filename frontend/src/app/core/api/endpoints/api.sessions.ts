@@ -1,11 +1,11 @@
-import type { User } from '../../transformers';
+import type { TransformedUser } from '../../transformers';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { sessionTransform, type Session } from '../../transformers';
 
 type CreatedSession = {
   id: number;
   hash: string;
-  user: User
+  user: TransformedUser
 };
 
 export const sessionsApi = createApi({
@@ -21,7 +21,7 @@ export const sessionsApi = createApi({
       },
       providesTags: ['Sessions'],
     }),
-    addSession: builder.mutation<CreatedSession, { hash: string; user: User }>({
+    addSession: builder.mutation<CreatedSession, { hash: string; user: TransformedUser }>({
       query: ({ hash, user }) => ({
         url: 'sessions',
         method: 'POST',

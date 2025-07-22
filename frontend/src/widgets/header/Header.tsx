@@ -1,60 +1,142 @@
 import { LocalStorage } from '@/app/core/services/localStorage.service';
-import { useEffect } from 'react';
-import { RoutesConf } from '@/app/core/enums/routes.enums'
-import { Box } from '@mui/material'
-import { Link, NavLink } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { RoutesConf } from '@/app/core/enums/routes.enums';
+import { Box, IconButton, Menu, MenuItem } from '@mui/material';
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { imageApp } from '@/shared/const/image';
 import { Navigation } from '../navigation/Navigation';
 import { nav_header } from '@/shared/const/navigation';
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { AuthStyle, HeaderBoxStyle, HeaderContainerStyle, LinkAvatarStyle, LinkEnterStyle, LinkLogoStyle, Logo } from './Header.style'
+import { AuthStyle, HeaderBoxStyle, HeaderContainerStyle, LinkAvatarStyle, LinkEnterStyle, LinkLogoStyle, Logo } from './Header.style';
 import { useGetUserByLoginQuery } from '@/app/core/api/endpoints/api.users';
+import { menuItems } from './const/const';
+import { useDeleteSessionMutation } from '@/app/core/api/endpoints/api.sessions';
+import { useDispatch, useSelector } from 'react-redux';
+import type { RootState } from '@/app/core/redux/store';
+import { logoutUser } from '@/app/core/redux/slice/userSlice';
 
 export const Header = () => {
-    const user = LocalStorage.onGetUser();
-    const isAuth = Boolean(user);
-    const login = user?.login || "";
+    const navigate = useNavigate();
+    const dispatch = useDispatch()
+    const user = useSelector((state: RootState) => state.user);
+    const isAuth = Boolean(user?.id);
+    const login = user?.login || '';
+    const sessionId = user?.sessionId
 
-    const { data: personalInfo } = useGetUserByLoginQuery(login, {
-        skip: !login,
-    });
+  const { data: personalInfo } = useGetUserByLoginQuery(login, {
+    skip: !login,
+  });
 
-    useEffect(() => {
-        if (personalInfo && isAuth) {
-        LocalStorage.onSetUser(personalInfo);
-        }
-    }, [personalInfo, isAuth]);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
 
-    return (
-        <Box component="header" sx={HeaderBoxStyle}>
-            <Box sx={HeaderContainerStyle}>
-                    <Link to={RoutesConf.main}>
-                        <Box
-                            sx={Logo}
-                            component="img"
-                            src={imageApp.mainLogo}
-                            alt="Банк"
-                        />
-                    </Link>
+  const [deleteSession] = useDeleteSessionMutation();
+  //   if (personalInfo && isAuth && sessionId !== undefined) {
+  //     const updatedUser = { ...personalInfo, sessionId };
+  //     LocalStorage.onSetUser(updatedUser);
+  //   }
+  // }, [personalInfo, isAuth, sessionId]);
 
+  useEffect(() => {
+    if (personalInfo && isAuth && sessionId !== undefined && sessionId !== null) {
+      const updatedUser = {
+        ...personalInfo,
+        sessionId: typeof sessionId === 'string' ? parseInt(sessionId, 10) : sessionId,
+      };
 
-                <Navigation data={nav_header} />
+      LocalStorage.onSetUser(updatedUser);
+    }
+  }, [personalInfo, isAuth, sessionId]);
 
-                <Box sx={AuthStyle}>
-                    {isAuth ? (
-                        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                            <AccountCircleIcon sx={LinkAvatarStyle} />
-                                
-                            <KeyboardArrowDownIcon sx={LinkLogoStyle} />
-                        </Box>
-                    ) : (
-                        <Box component={NavLink} sx={LinkEnterStyle} to={RoutesConf.sign_in}>
-                            Войти
-                        </Box>
-                    )}
-                </Box>
+  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+  //   if (sessionId !== undefined) {
+  //     try {
+  //       await deleteSession(sessionId).unwrap();
+  //     } catch (error) {
+  //       console.error('Ошибка при удалении сессии:', error);
+  //     }
+  //   }
+      
+  //   LocalStorage.onRemoveUser();
+  //   handleMenuClose();
+  //   navigate(`/${RoutesConf.sign_in}`);
+  // };
+
+  const handleLogout = async () => {
+    if (sessionId !== undefined) {
+      try {
+        await deleteSession(sessionId).unwrap();
+      } catch (error) {
+        console.error('Ошибка при удалении сессии:', error);
+      }
+    }
+      
+    dispatch(logoutUser());
+    handleMenuClose();
+    navigate(`/${RoutesConf.sign_in}`);
+  };
+
+  const handleNavigate = (route: string) => {
+    handleMenuClose();
+    navigate(route);
+  };
+
+  return (
+    <Box component="header" sx={HeaderBoxStyle}>
+      <Box sx={HeaderContainerStyle}>
+        <Link to={RoutesConf.main}>
+          <Box sx={Logo} component="img" src={imageApp.mainLogo} alt="Банк" />
+        </Link>
+
+        <Navigation data={nav_header} />
+
+        <Box sx={AuthStyle}>
+          {isAuth ? (
+            <>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <AccountCircleIcon sx={LinkAvatarStyle} />
+                <IconButton onClick={handleMenuOpen} sx={{ color: 'background.paper' }}>
+                  <KeyboardArrowDownIcon sx={LinkLogoStyle} />
+                </IconButton>
+              </Box>
+
+              <Menu
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleMenuClose}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+              >
+                {menuItems.map((item, index) => (
+                  <MenuItem
+                    key={index}
+                    onClick={() => {
+                      if (item.action === 'logout') {
+                        handleLogout();
+                      } else {
+                        handleNavigate(item.route);
+                      }
+                    }}
+                  >
+                    {item.label}
+                  </MenuItem>
+                ))}
+              </Menu>
+            </>
+          ) : (
+            <Box component={NavLink} sx={LinkEnterStyle} to={RoutesConf.sign_in}>
+              Войти
             </Box>
+          )}
         </Box>
-    );
+      </Box>
+    </Box>
+  );
 };
