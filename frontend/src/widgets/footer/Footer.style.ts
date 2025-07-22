@@ -1,9 +1,6 @@
 import type { SxProps, Theme } from "@mui/material";
 
 export const MainFooterStyle: SxProps<Theme> = (theme) => ({
-  position: "absolute",
-  bottom: 0,
-  zIndex: 18,
   width: "100%",
   display: "flex",
   flexDirection: "column",

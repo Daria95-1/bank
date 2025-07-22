@@ -7,7 +7,7 @@ export const HeaderBoxStyle: SxProps<Theme> = (theme) => ({
   width: "100%",
   height: "60px",
   display: "flex",
-  background: theme.palette.primary.main,
+  background: theme.palette.primary.dark,
   color: theme.palette.background.default,
   whiteSpace: "nowrap",
 });
