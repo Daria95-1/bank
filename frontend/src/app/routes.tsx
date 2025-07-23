@@ -9,6 +9,8 @@ import { UserDeposits } from '@/pages/deposits/userDeposits/UserDeposits'
 import { AllDeposits } from '@/pages/deposits/allDeposits/allDeposits'
 import { DepositDetails } from '@/pages/deposits/allDeposits/depositDetails/depositDetails'
 import { DepositHistory } from '@/pages/deposits/userDeposits/depositHistory/depositHistory'
+import { Cards } from '@/pages/cards/Cards'
+import { CardDescription } from '@/pages/cards/cardDescription/CardDescription'
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +28,11 @@ export const router = createBrowserRouter([
       {
         path: RoutesConf.main,
         element: <Main />,
+      },
+      {
+        path: RoutesConf.cards,
+        element: <Cards />,
+        children: [{ path: "card", element: <CardDescription /> }],
       },
       {
         path: RoutesConf.user_deposits,
