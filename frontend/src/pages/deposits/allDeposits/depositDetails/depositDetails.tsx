@@ -14,7 +14,7 @@ export const DepositDetails = () => {
 
     return (
         <LayoutWrapper>
-            <DynamicTitle text="Подробнее о вкладе " whiteText={`«${deposit?.mainTitle}»`} />
+            <DynamicTitle mainText="Подробнее о вкладе " secondaryText={`«${deposit?.mainTitle}»`} />
 
             <ScrollableContainer height="32rem">
                 <Box sx={ContainerStyle}>

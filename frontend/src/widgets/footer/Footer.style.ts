@@ -21,6 +21,7 @@ export const MenuStyle: SxProps<Theme> = (theme) => ({
   alignItems: "center",
   height: "40px",
   color: theme.palette.common.white,
+  whiteSpace: "nowrap",
   cursor: "pointer",
   gap: "16px",
 });

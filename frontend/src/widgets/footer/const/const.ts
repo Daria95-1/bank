@@ -1,4 +1,3 @@
-import { RoutesConf } from '@/app/core/enums/routes.enums';
 import type { contactInfoProps } from '@/app/core/models/nav.models';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -19,37 +18,5 @@ export const contactInfo: contactInfoProps[] = [
     id: 3,
     icon: LocationOnIcon,
     description: "г. Москва, Ленинградский Проспект, 49",
-  },
-];
-
-export type MainMenuItem = {
-  label: string;
-  link: string;
-};
-
-export const menuItems: MainMenuItem[] = [
-  {
-    label: "О банке",
-    link: `/${RoutesConf.aboutBank}`,
-  },
-  {
-    label: "Продукты",
-    link: `/${RoutesConf.cards}`,
-  },
-  {
-    label: "Вклады",
-    link: `/${RoutesConf.user_deposits}/${RoutesConf.all_deposits}`,
-  },
-  {
-    label: "Курсы валют",
-    link: `/${RoutesConf.currency}`,
-  },
-  {
-    label: "Контакты",
-    link: `/${RoutesConf.contacts}`,
-  },
-  {
-    label: "Новости",
-    link: `/${RoutesConf.news}`,
   },
 ];

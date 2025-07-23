@@ -32,7 +32,7 @@ export const Cards = () => {
 
   return (
     <LayoutWrapper>
-      <DynamicTitle text="Карточные " whiteText="продукты" />
+      <DynamicTitle mainText="Карточные " secondaryText="продукты" />
 
       <CardsNavigation onHandleChange={handleClick} />
 

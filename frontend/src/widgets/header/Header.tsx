@@ -5,7 +5,6 @@ import { Box, IconButton, Menu, MenuItem } from '@mui/material';
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { imageApp } from '@/shared/const/image';
 import { Navigation } from '../navigation/Navigation';
-import { nav_header } from '@/shared/const/navigation';
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { AuthStyle, HeaderBoxStyle, HeaderContainerStyle, LinkAvatarStyle, LinkEnterStyle, LinkLogoStyle, Logo } from './Header.style';
@@ -15,6 +14,7 @@ import { useDeleteSessionMutation } from '@/app/core/api/endpoints/api.sessions'
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '@/app/core/redux/store';
 import { logoutUser } from '@/app/core/redux/slice/userSlice';
+import { nav_menu } from '@/shared/const/navigation';
 
 export const Header = () => {
     const navigate = useNavigate();
@@ -78,7 +78,7 @@ export const Header = () => {
           <Box sx={Logo} component="img" src={imageApp.mainLogo} alt="Банк" />
         </Link>
 
-        <Navigation data={nav_header} />
+        <Navigation data={nav_menu} />
 
         <Box sx={AuthStyle}>
           {isAuth ? (

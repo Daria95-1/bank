@@ -1,4 +1,4 @@
-import { contactInfo, menuItems } from "./const/const";
+import { contactInfo } from "./const/const";
 import { Contacts } from './contactInfo/Contacts';
 import { Socials } from './socials/Socials';
 import { Link } from "react-router-dom";
@@ -12,6 +12,8 @@ import {
   ContentStyle,
 } from "./Footer.style"
 import { imageApp } from '@/shared/const/image';
+import { Navigation } from '../navigation/Navigation';
+import { nav_menu } from '@/shared/const/navigation';
 
 export const Footer = () => {
   
@@ -26,16 +28,8 @@ export const Footer = () => {
         </Link>
       </Box>
 
-      <Box sx={MenuStyle}>{menuItems.map((item) => (
-        <Box
-          component={Link}
-          sx={{ color: "white", textDecoration: "none" }}
-          to={item.link}
-          key={item.label}
-        >
-          {item.label}
-        </Box>
-        ))}
+      <Box sx={MenuStyle}>
+        <Navigation data={nav_menu} />
       </Box>
         
       <Contacts contacts={contactInfo} />

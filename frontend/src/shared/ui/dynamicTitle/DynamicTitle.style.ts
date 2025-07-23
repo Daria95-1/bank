@@ -8,7 +8,7 @@ export const TitleStyle: SxProps<Theme> = (theme) => ({
     justifySelf: "center",
 });
 
-export const WhiteTextStyle: SxProps<Theme> = (theme) => ({
+export const SecondaryTextStyle: SxProps<Theme> = (theme) => ({
     fontSize: "44px",
     color: theme.palette.secondary.light
 });

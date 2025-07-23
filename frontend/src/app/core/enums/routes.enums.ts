@@ -2,7 +2,6 @@ export enum RoutesConf {
     main = "/",
     sign_in = "sign-in",
     sign_up = "sign-up",
-    aboutBank = "aboutBank",
     cards = "cards",
     cards_description = "cards-description",
     user_deposits = "user-deposits",
