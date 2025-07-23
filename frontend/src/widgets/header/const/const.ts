@@ -6,7 +6,7 @@ type MenuItemType =
 
 export const menuItems: MenuItemType[] = [
   { label: 'Мои счета', route: RoutesConf.accounts },
-  { label: 'Мои вклады', route: RoutesConf.deposits },
+  { label: 'Мои вклады', route: RoutesConf.user_deposits },
   { label: 'Личный кабинет', route: RoutesConf.profile },
   { label: 'Выйти', action: 'logout' },
 ];

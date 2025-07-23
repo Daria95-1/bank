@@ -9,7 +9,7 @@ const nav_header: NavModel[] = [
   },
   {
     id: 2,
-    url: RoutesConf.products,
+    url: RoutesConf.cards,
     name: "Продукты",
   },
   {
