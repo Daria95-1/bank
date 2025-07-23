@@ -18,7 +18,7 @@ export const EmptyContent: React.FC<EmptyStateProps> = ({ line1, line2, buttonLa
       <Typography>{line2}</Typography>
 
       {buttonLabel && onButtonClick && (
-        <Button data-testid="navigate-button" sx={AddButtonStyle} onClick={onButtonClick}>
+        <Button  sx={AddButtonStyle} onClick={onButtonClick}>
           {buttonLabel}
         </Button>
       )}

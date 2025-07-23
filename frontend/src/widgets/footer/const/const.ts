@@ -33,6 +33,14 @@ export const menuItems: MainMenuItem[] = [
     link: `/${RoutesConf.aboutBank}`,
   },
   {
+    label: "Продукты",
+    link: `/${RoutesConf.cards}`,
+  },
+  {
+    label: "Вклады",
+    link: `/${RoutesConf.user_deposits}/${RoutesConf.all_deposits}`,
+  },
+  {
     label: "Курсы валют",
     link: `/${RoutesConf.currency}`,
   },
