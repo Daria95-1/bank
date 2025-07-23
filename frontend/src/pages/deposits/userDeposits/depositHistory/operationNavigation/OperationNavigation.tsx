@@ -20,7 +20,6 @@ export const OperationNavigation: React.FC<OperationsNavigationProps> = ({ onHan
     <Box component="section" sx={sectionStyle}>
       {OPERATION_NAVIGATION.map((item) => (
         <ButtonSubmitMain
-          data-testid="operation-button-submit"
           key={item.value}
           active={activeItem === item.value}
           onClick={() => handleItemClick(item.value)}

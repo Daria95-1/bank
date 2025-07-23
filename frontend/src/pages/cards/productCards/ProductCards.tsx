@@ -61,7 +61,6 @@ export const ProductCards: React.FC<ProductCardsProps> = ({ products, onChooseCa
 
             <Box key={item.cardId} sx={CardDriverStyle}>
               <ButtonSubmitSecondary
-                data-testid={`card-details-button-${item.cardId}`}
                 valid={true}
                 width="auto"
                 onClick={() => handleClick(item.numberCard)}
@@ -70,7 +69,6 @@ export const ProductCards: React.FC<ProductCardsProps> = ({ products, onChooseCa
               </ButtonSubmitSecondary>
 
               <ButtonSubmit
-                data-testid={`card-order-button-${item.cardId}`}
                 onClick={handleOrderClick}
                 valid={true}
                 width="auto">

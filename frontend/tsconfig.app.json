@@ -33,5 +33,6 @@
     "types": ["vite/client", "react", "react-dom"]
   },
   "include": ["src"],
-  "files": ["src/theme/theme.d.ts"]
+  "files": ["src/theme/theme.d.ts"],
+  "typeRoots": ["./node_modules/@types", "./src/@types"]
 }

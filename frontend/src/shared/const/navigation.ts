@@ -20,7 +20,7 @@ const nav_header: NavModel[] = [
   {
     id: 4,
     url: RoutesConf.currency,
-    name: "Курс валют",
+    name: "Обмен валют",
   },
   {
     id: 5,
@@ -53,7 +53,7 @@ const nav_footer: NavModel[] = [
   {
     id: 4,
     url: RoutesConf.currency,
-    name: "Курс валют",
+    name: "Обмен валют",
   },
   {
     id: 5,

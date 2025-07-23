@@ -11,6 +11,10 @@ import { DepositDetails } from '@/pages/deposits/allDeposits/depositDetails/depo
 import { DepositHistory } from '@/pages/deposits/userDeposits/depositHistory/depositHistory'
 import { Cards } from '@/pages/cards/Cards'
 import { CardDescription } from '@/pages/cards/cardDescription/CardDescription'
+import { Currency } from '@/pages/currency/Currency'
+import { Contacts } from '@/pages/contacts/Contacts'
+import { News } from '@/pages/news/News'
+import { AboutBank } from '@/pages/aboutBank/AboutBank'
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +32,10 @@ export const router = createBrowserRouter([
       {
         path: RoutesConf.main,
         element: <Main />,
+      },
+      {
+        path: RoutesConf.aboutBank,
+        element: <AboutBank />,
       },
       {
         path: RoutesConf.cards,
@@ -54,6 +62,18 @@ export const router = createBrowserRouter([
             element: <DepositHistory />,
           },
         ],
+      },
+      {
+        path: RoutesConf.currency,
+        element: <Currency />,
+      },
+      {
+        path: RoutesConf.contacts,
+        element: <Contacts />,
+      },
+      {
+        path: RoutesConf.news,
+        element: <News />,
       },
       {
         path: RoutesConf.under_construction,

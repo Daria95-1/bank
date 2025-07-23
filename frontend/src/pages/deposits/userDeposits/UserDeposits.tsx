@@ -55,7 +55,6 @@ export const UserDeposits = () => {
 
             {mockUserDeposits.length === 0 ? (
                 <EmptyContent
-                    data-testid="deposits-empty"
                     line1="У вас нет доступных вкладов."
                     line2="Вы можете открыть новый вклад."
                     buttonLabel="Открыть новый вклад"
@@ -66,13 +65,11 @@ export const UserDeposits = () => {
                     <Box sx={DepositsStyle}>
                         <ScrollableContainer height="30rem">
                                 <Box
-                                    data-testid="deposits-list"
                                     component="ul"
                                     sx={DepositsListStyle}
                                 >
                                 {mockUserDeposits.map((item, index) => (
                                 <DepositItem
-                                    data-testid={`deposit-item-${index}`}
                                     key={index}
                                     item={item}
                                     selected={selectedIndex === index}
@@ -83,7 +80,6 @@ export const UserDeposits = () => {
                         </ScrollableContainer>
                         
                         <Button
-                            data-testid="deposits-open-button"
                             sx={ButtonAddStyle}
                             onClick={handleSubmit}>Открыть новый вклад
                         </Button>

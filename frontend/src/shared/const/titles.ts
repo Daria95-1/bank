@@ -11,11 +11,11 @@ export const Titles: Record<RoutesConfValues, string> = {
     [RoutesConf.deposit_history]: "История вклада",
     [RoutesConf.under_construction]: "В разработке",
     [RoutesConf.aboutBank]: "О банке",
-    [RoutesConf.products]: "Продукты",
-    [RoutesConf.currency]: "Курс валют",
+    [RoutesConf.currency]: "Обмен валют",
     [RoutesConf.contacts]: "Контакты",
     [RoutesConf.news]: "Новости",
     [RoutesConf.cards]: "Карты",
+    [RoutesConf.cards_description]: "Описание карт",
     [RoutesConf.accounts]: "Счета",
     [RoutesConf.profile]: "Профиль",
     [RoutesConf.deposit_details]: "Детали вклада"

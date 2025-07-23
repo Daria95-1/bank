@@ -27,7 +27,6 @@ export const CardsNavigation: React.FC<ProductNavigationProps> = ({ onHandleChan
     >
       {NAVIGATION_ITEMS.map((item) => (
         <ButtonSubmitMain
-          data-testid="nav-button-submit"
           key={item.value}
           active={activeItem === item.value}
           onClick={() => handleItemClick(item.value)}

@@ -20,7 +20,6 @@ export const DepositNavigation: React.FC<DepositsNavigationProps> = ({ onHandleC
     <Box component="section" sx={sectionStyle}>
       {DEPOSIT_NAVIGATION.map((item) => (
         <ButtonSubmitMain
-          data-testid="nav-button-submit"
           key={item.value}
           active={activeItem === item.value}
           onClick={() => handleItemClick(item.value)}
