@@ -10,7 +10,7 @@ import {
 import type { NewsItem } from '@/app/core/api/mocks/mockNews';
 import { useNavigate } from 'react-router-dom';
 import { RoutesConf } from '@/app/core/enums/routes.enums';
-import { ButtonSubmit } from '@/shared/ui/buttonSubmit/ButtonSubmit';
+import { ButtonSubmit } from '@/shared/ui/buttons/buttonSubmit/ButtonSubmit';
 
 export const NewsCard = ({ news }: { news: NewsItem }) => {
   const navigate = useNavigate();

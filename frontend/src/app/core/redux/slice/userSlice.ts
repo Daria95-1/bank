@@ -17,7 +17,7 @@ function mapCreatedUserToUser(user: (CreatedUser & { sessionId?: number }) | nul
   return {
     id: user.id ?? null,
     login: user.login ?? null,
-    roleId: user.role_id ?? ROLE.GUEST,
+    roleId: user.role_id !== undefined ? String(user.role_id) : ROLE.GUEST,
     sessionId: user.sessionId !== undefined ? String(user.sessionId) : null,
   }
 }

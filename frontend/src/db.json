@@ -7,5 +7,25 @@
       "role_id": 1
     }
   ],
-  "sessions": []
+  "roles": [
+    {
+      "id": "0",
+      "name": "Гость"
+    },
+    {
+      "id": "1",
+      "name": "Пользователь"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "0328",
+      "hash": "v47w3tsnt3amdh8isij",
+      "user": {
+        "id": "8c59",
+        "login": "daria",
+        "roleId": 1
+      }
+    }
+  ]
 }

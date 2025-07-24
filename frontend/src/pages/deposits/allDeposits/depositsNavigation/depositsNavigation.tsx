@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import { useState } from 'react';
 import { DEPOSIT_TYPES, DEPOSIT_NAVIGATION, type DepositType } from '../../const/const';
 import { sectionStyle } from './depositsNavigation.style';
-import { ButtonSubmitMain } from '@/shared/ui/buttonSubmitMain/ButtonSubmitMain';
+import { ButtonSubmitMain } from '@/shared/ui/buttons/buttonSubmitMain/ButtonSubmitMain';
 
 type DepositsNavigationProps = {
   onHandleChange: (type: DepositType) => void;

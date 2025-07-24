@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import { useState } from 'react';
 import { sectionStyle } from './OperationNavigation.style';
 import { OPERATION_NAVIGATION, OPERATION_TYPES, type OperationType } from '@/pages/deposits/const/const';
-import { ButtonSubmitMain } from '@/shared/ui/buttonSubmitMain/ButtonSubmitMain';
+import { ButtonSubmitMain } from '@/shared/ui/buttons/buttonSubmitMain/ButtonSubmitMain';
 
 type OperationsNavigationProps = {
   onHandleChange: (type: OperationType) => void;

@@ -56,7 +56,7 @@ export const useAuthSubmit = (isRegister = false): UseAuthSubmitReturn => {
         dispatch(setUser({
           id: newUser.id,
           login: newUser.login,
-          roleId: newUser.role_id,
+          roleId: String(newUser.role_id),
           sessionId: createdSession.id,
         }))
 
@@ -97,7 +97,7 @@ export const useAuthSubmit = (isRegister = false): UseAuthSubmitReturn => {
         dispatch(setUser({
           id: user.id,
           login: user.login,
-          roleId: user.role_id,
+          roleId: String(user.role_id),
           sessionId: createdSession.id,
         }))
 

@@ -7,8 +7,8 @@ import { ItemTitle } from '@/shared/ui/itemTitle/ItemTitle';
 import type { PersonalCard } from '@/app/core/models/cards.models';
 import { CreditCard } from '../creditCard/CreditCard';
 import { DynamicItemInfo } from '@/shared/ui/dynamicItemInfo/DynamicItemInfo';
-import { ButtonSubmitSecondary } from '@/shared/ui/buttonSubmitSecondary/ButtonSubmitSecondary';
-import { ButtonSubmit } from '@/shared/ui/buttonSubmit/ButtonSubmit';
+import { ButtonSubmitSecondary } from '@/shared/ui/buttons/buttonSubmitSecondary/ButtonSubmitSecondary';
+import { ButtonGradient } from '@/shared/ui/buttons/buttonGradient/ButtonGradient';
 
 type ProductCardsProps = {
   products: PersonalCard[];
@@ -34,10 +34,6 @@ export const ProductCards: React.FC<ProductCardsProps> = ({ products, onChooseCa
       setButtonText("подробнее");
       navigate(`/${RoutesConf.cards}`);
     }
-  };
-
-  const handleOrderClick = () => {
-    navigate(`/${RoutesConf.under_construction}`);
   };
 
   return (
@@ -68,12 +64,7 @@ export const ProductCards: React.FC<ProductCardsProps> = ({ products, onChooseCa
                 {buttonText}
               </ButtonSubmitSecondary>
 
-              <ButtonSubmit
-                onClick={handleOrderClick}
-                valid={true}
-                width="auto">
-                Заказать карту
-              </ButtonSubmit>
+              <ButtonGradient to={RoutesConf.under_construction} label="Заказать карту" />
             </Box>
           </Box>
         </Box>

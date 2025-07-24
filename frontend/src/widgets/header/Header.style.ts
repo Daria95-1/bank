@@ -54,7 +54,7 @@ export const LinkEnterStyle: SxProps<Theme> = (theme) => ({
   textDecoration: "none",
   background: theme.palette.gradients.primary,
   borderRadius: "20px",
-  padding: "9px",
+  padding: "8px 15px",
   marginLeft: "32px"
 });
 

@@ -1,12 +1,11 @@
 import { RoutesConf } from '@/app/core/enums/routes.enums';
 import { ItemTitle } from '@/shared/ui/itemTitle/ItemTitle';
 import { Box } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
 import { DepositDriverStyle, DepositInformationStyle, DepositOfferStyle, InfoAndButtonsStyle } from './Deposit.style';
-import { ButtonSubmit } from '@/shared/ui/buttonSubmit/ButtonSubmit';
 import { DynamicItemInfo } from '@/shared/ui/dynamicItemInfo/DynamicItemInfo';
 import type { PersonalDeposit } from '@/app/core/models/deposits.models';
-import { ButtonSubmitSecondary } from '@/shared/ui/buttonSubmitSecondary/ButtonSubmitSecondary';
+import { ButtonSubmitSecondary } from '@/shared/ui/buttons/buttonSubmitSecondary/ButtonSubmitSecondary';
+import { ButtonGradient } from '@/shared/ui/buttons/buttonGradient/ButtonGradient';
 
 type DepositsProps = {
   deposits: PersonalDeposit[];
@@ -14,12 +13,6 @@ type DepositsProps = {
 };
 
 export const Deposit: React.FC<DepositsProps> = ({ deposits, onChooseDeposit }) => {
-  const navigate = useNavigate();
-
-  const handleOrderClick = () => {
-    navigate(`/${RoutesConf.under_construction}`);
-  };
-
   return (
     <>
       {deposits.map((item: PersonalDeposit) => (
@@ -48,13 +41,7 @@ export const Deposit: React.FC<DepositsProps> = ({ deposits, onChooseDeposit }) 
                 Подробные условия
               </ButtonSubmitSecondary>
 
-              <ButtonSubmit
-                width="auto"
-                onClick={handleOrderClick}
-                valid={true}
-              >
-                Открыть
-              </ButtonSubmit>
+              <ButtonGradient to={RoutesConf.under_construction} label="Открыть" />
             </Box>
           </Box>
         </Box>

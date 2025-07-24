@@ -11,7 +11,7 @@ import {
   Box,
 } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
-import { formWrapper, LinkStyle, title } from './Auth.style'
+import { formWrapper, LinkStyle, title, WrapperStyle } from './Auth.style'
 import { authFormSchema } from '@/app/core/schemas'
 import { RoutesConf } from '@/app/core/enums/routes.enums'
 import { ROLE } from '@/shared/const/role'
@@ -33,8 +33,8 @@ export const Authorization = () => {
   const [showPassword, setShowPassword] = useState(false)
 
   useEffect(() => {
-    if (roleId !== ROLE.GUEST) {
-      navigate(`/${RoutesConf.main}`, { replace: true })
+    if (roleId === ROLE.USER) {
+      navigate(`/${RoutesConf.main}`)
     }
   }, [roleId, navigate])
 
@@ -50,79 +50,81 @@ export const Authorization = () => {
   }
 
   return (
-    <Formik
-      initialValues={{ login: '', password: '' }}
-      validationSchema={authFormSchema}
-      onSubmit={handleFormSubmit}
-      validateOnChange={false}
-      validateOnBlur={false}
-    >
-      {({ errors, touched, handleChange }) => (
-        <Box sx={formWrapper}>
-          <Form>
-            <Typography sx={title}>Вход</Typography>
+    <Box sx={WrapperStyle}>
+      <Formik
+        initialValues={{ login: '', password: '' }}
+        validationSchema={authFormSchema}
+        onSubmit={handleFormSubmit}
+        validateOnChange={false}
+        validateOnBlur={false}
+      >
+        {({ errors, touched, handleChange }) => (
+          <Box sx={formWrapper}>
+            <Form>
+              <Typography sx={title}>Вход</Typography>
 
-            <Field
-              name="login"
-              as={TextField}
-              label="Логин"
-              variant="outlined"
-              fullWidth
-              margin="normal"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                clearServerError()
-                handleChange(e)
-              }}
-              error={Boolean(touched.login && errors.login)}
-              helperText={touched.login && errors.login ? errors.login : ''}
-            />
+              <Field
+                name="login"
+                as={TextField}
+                label="Логин"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  clearServerError()
+                  handleChange(e)
+                }}
+                error={Boolean(touched.login && errors.login)}
+                helperText={touched.login && errors.login ? errors.login : ''}
+              />
 
-            <Field
-              name="password"
-              as={TextField}
-              label="Пароль"
-              variant="outlined"
-              fullWidth
-              margin="normal"
-              type={showPassword ? 'text' : 'password'}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                clearServerError()
-                handleChange(e)
-              }}
-              error={Boolean(touched.password && errors.password)}
-              helperText={
-                touched.password && errors.password ? errors.password : ''
-              }
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton
-                      onClick={() => setShowPassword(!showPassword)}
-                      edge="end"
-                      aria-label="toggle password visibility"
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            />
+              <Field
+                name="password"
+                as={TextField}
+                label="Пароль"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                type={showPassword ? 'text' : 'password'}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  clearServerError()
+                  handleChange(e)
+                }}
+                error={Boolean(touched.password && errors.password)}
+                helperText={
+                  touched.password && errors.password ? errors.password : ''
+                }
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        onClick={() => setShowPassword(!showPassword)}
+                        edge="end"
+                        aria-label="toggle password visibility"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+              />
 
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              fullWidth
-            >
-              Войти
-            </Button>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                fullWidth
+              >
+                Войти
+              </Button>
 
-            <Box sx={LinkStyle} onClick={handleToReg}>
-              Зарегистрироваться
-            </Box>
-          </Form>
-        </Box>
-      )}
-    </Formik>
+              <Box sx={LinkStyle} onClick={handleToReg}>
+                Зарегистрироваться
+              </Box>
+            </Form>
+          </Box>
+        )}
+      </Formik>
+    </Box>
   )
 }

@@ -12,6 +12,7 @@ import news6 from "./../assets/images/news6.png"
 import news7 from "./../assets/images/news7.png"
 import news8 from "./../assets/images/news8.png"
 import news9 from "./../assets/images/news9.png"
+import main from "./../assets/images/main.png"
 
 export const imageApp: { [key: string]: string } = {
     mainLogo,
@@ -28,4 +29,5 @@ export const imageApp: { [key: string]: string } = {
     news7,
     news8,
     news9,
+    main
 }
