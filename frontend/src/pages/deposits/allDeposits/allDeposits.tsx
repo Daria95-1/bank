@@ -25,7 +25,7 @@ export const AllDeposits = () => {
     
     return (
         <LayoutWrapper>
-            <DynamicTitle text="Вклады" />
+            <DynamicTitle mainText="Вклады" />
 
             <DepositNavigation onHandleChange={handleClick} />
 

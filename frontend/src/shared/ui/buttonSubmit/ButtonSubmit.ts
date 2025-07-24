@@ -10,7 +10,7 @@ type ButtonType = ButtonProps & {
 export const ButtonSubmit = styled(Button, {
   shouldForwardProp: (prop) => prop !== "valid",
 })<ButtonType>(({ theme, valid, width }) => ({
-  background: valid ? theme.palette.gradients.primary : theme.palette.primary.dark,
+  background: valid ? theme.palette.gradients.primary : theme.palette.primary.main,
   borderRadius: "0.75rem",
   border: "none",
   color: theme.palette.common.white,
