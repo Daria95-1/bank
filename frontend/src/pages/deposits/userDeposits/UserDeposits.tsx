@@ -51,7 +51,7 @@ export const UserDeposits = () => {
     
     return (
         <LayoutWrapper>
-            <DynamicTitle text="Мои " whiteText="вклады" />
+            <DynamicTitle mainText="Мои " secondaryText="вклады" />
 
             {mockUserDeposits.length === 0 ? (
                 <EmptyContent
@@ -128,7 +128,7 @@ export const UserDeposits = () => {
             ) : (
                 <Box sx={BackgroundStyle}>
 
-                    <DynamicTitle text="Информация " whiteText="по вкладу" style={{ fontSize: '2rem' }} />
+                    <DynamicTitle mainText="Информация " secondaryText="по вкладу" style={{ fontSize: '2rem' }} />
 
                     <DepositInfo
                         selectedDepositInfo={selectedDepositInfo}

@@ -51,7 +51,7 @@ export const DepositHistory = () => {
 
     return (
         <LayoutWrapper>
-            <DynamicTitle text="История " whiteText="операций по вкладу" />
+            <DynamicTitle mainText="История " secondaryText="операций по вкладу" />
 
              <Box sx={ContainerStyle}>
                 <ClickAwayListener onClickAway={handleCalendarClose}>

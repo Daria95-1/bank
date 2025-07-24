@@ -2,7 +2,7 @@ import { Box, Dialog, DialogContent, DialogTitle } from '@mui/material'
 import { ContentStyle, ChartStyle, SpanStyle } from './CurrencyModal.style'
 import type { CurrencyItem } from '../const/const';
 import type { FC } from 'react';
-import { CurrencyChart } from '../CurrencyChart/CurrencyChart';
+import { CurrencyChart } from '../chart/CurrencyChart';
 
 type Props = {
   open: boolean;
