@@ -12,11 +12,11 @@ export const contactInfo: contactInfoProps[] = [
   {
     id: 2,
     icon: LocalPhoneIcon,
-    description: "+7 (999) 133-44-28",
+    description: "+7 (999) 999-99-99",
   },
   {
     id: 3,
     icon: LocationOnIcon,
-    description: "г. Москва, Ленинградский Проспект, 49",
+    description: "г. Москва, ул. Большая Никитская, д. 15",
   },
 ];
