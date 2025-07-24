@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import { sectionStyle } from './cardsNavigation.style';
 import { RoutesConf } from '@/app/core/enums/routes.enums';
 import { CARD_TYPES, NAVIGATION_ITEMS, type CardType } from '../const/const';
-import { ButtonSubmitMain } from '@/shared/ui/buttonSubmitMain/ButtonSubmitMain';
+import { ButtonSubmitMain } from '@/shared/ui/buttons/buttonSubmitMain/ButtonSubmitMain';
 
 type ProductNavigationProps = {
   onHandleChange: (type: CardType) => void;

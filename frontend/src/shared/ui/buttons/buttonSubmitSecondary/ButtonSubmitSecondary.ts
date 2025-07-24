@@ -11,10 +11,11 @@ export const ButtonSubmitSecondary = styled(Button, {
   shouldForwardProp: (prop) => prop !== "valid",
 })<ButtonType>(({ theme, valid, width }) => ({
   background: theme.palette.text.secondary,
-  borderRadius: "12px",
+  borderRadius: "20px",
   border: "none",
   color: theme.palette.common.white,
   width: width,
+  fontSize: "15px",
   height: "42px",
   padding: "4px 15px",
   textTransform: "none",

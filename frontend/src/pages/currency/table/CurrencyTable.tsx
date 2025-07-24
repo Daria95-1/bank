@@ -1,7 +1,7 @@
 import { Box, Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
 import { currencyData, type CurrencyItem } from '../const/const'
 import { formatDateTime } from '@/shared/utils/formatDateTime';
-import { cellStyle } from './CurrencyTable.style';
+import { buttonStyle, cellStyle } from './CurrencyTable.style';
 
 type CurrencyTableProps = {
   handleOpen: (currency: CurrencyItem) => void;
@@ -36,7 +36,8 @@ export const CurrencyTable = ({ handleOpen }: CurrencyTableProps) => {
                         <TableCell>{sell}</TableCell>
                         <TableCell>{updated}</TableCell>
                         <TableCell>
-                        <Button variant="outlined" size="small" onClick={() => handleOpen({ id, name, buy, sell, icon })}>
+                                
+                        <Button sx={buttonStyle} variant="outlined" size="small" onClick={() => handleOpen({ id, name, buy, sell, icon })}>
                             Показать
                         </Button>
                         </TableCell>

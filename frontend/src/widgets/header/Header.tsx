@@ -2,12 +2,12 @@ import { LocalStorage } from '@/app/core/services/localStorage.service';
 import { useEffect, useState } from 'react';
 import { RoutesConf } from '@/app/core/enums/routes.enums';
 import { Box, IconButton, Menu, MenuItem } from '@mui/material';
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { imageApp } from '@/shared/const/image';
 import { Navigation } from '../navigation/Navigation';
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { AuthStyle, HeaderBoxStyle, HeaderContainerStyle, LinkAvatarStyle, LinkEnterStyle, LinkLogoStyle, Logo } from './Header.style';
+import { AuthStyle, HeaderBoxStyle, HeaderContainerStyle, LinkAvatarStyle, LinkLogoStyle, Logo } from './Header.style';
 import { useGetUserByLoginQuery } from '@/app/core/api/endpoints/api.users';
 import { menuItems } from './const/const';
 import { useDeleteSessionMutation } from '@/app/core/api/endpoints/api.sessions';
@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '@/app/core/redux/store';
 import { logoutUser } from '@/app/core/redux/slice/userSlice';
 import { nav_menu } from '@/shared/const/navigation';
+import { ButtonGradient } from '@/shared/ui/buttons/buttonGradient/ButtonGradient';
 
 export const Header = () => {
     const navigate = useNavigate();
@@ -114,9 +115,7 @@ export const Header = () => {
               </Menu>
             </>
           ) : (
-            <Box component={NavLink} sx={LinkEnterStyle} to={RoutesConf.sign_in}>
-              Войти
-            </Box>
+              <ButtonGradient to={RoutesConf.sign_in} label="Войти" />
           )}
         </Box>
       </Box>
