@@ -14,6 +14,7 @@ import { CardDescription } from '@/pages/cards/cardDescription/CardDescription'
 import { Currency } from '@/pages/currency/Currency'
 import { Contacts } from '@/pages/contacts/Contacts'
 import { News } from '@/pages/news/News'
+import { NewsDetails } from '@/pages/news/newsDetails/NewsDetails'
 
 export const router = createBrowserRouter([
   {
@@ -68,7 +69,16 @@ export const router = createBrowserRouter([
       },
       {
         path: RoutesConf.news,
-        element: <News />,
+        children: [
+          {
+            index: true,
+            element: <News />,
+          },
+          {
+            path: `${RoutesConf.news_details}/:id`,
+            element: <NewsDetails />,
+          },
+        ],
       },
       {
         path: RoutesConf.under_construction,

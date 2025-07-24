@@ -11,6 +11,7 @@ export enum RoutesConf {
     currency = "currency",
     contacts = "contacts",
     news = "news",
+    news_details = "news-details",
     accounts = "accounts",
     profile = "profile",
     under_construction = "under-construction"

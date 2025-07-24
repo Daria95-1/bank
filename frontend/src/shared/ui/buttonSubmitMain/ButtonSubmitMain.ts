@@ -11,30 +11,23 @@ export const ButtonSubmitMain = styled(Button, {
 })<ButtonSubmiteType>(({ theme, active }) => ({
   width: "auto",
   height: "42px",
-  backgroundColor: active ? theme.palette.secondary.main : theme.palette.primary.main,
+  backgroundColor: active ? theme.palette.primary.main : theme.palette.text.disabled,
   borderRadius: "100px",
   border: "none",
-  color: active ? theme.palette.primary.dark : theme.palette.common.white ,
+  color: active ? theme.palette.common.white : theme.palette.text.primary,
   padding: "14px 24px",
-
-  "&:focus": {
-    outline: "none",
-    boxShadow: "none",
-    backgroundColor: active ? theme.palette.secondary.main : theme.palette.primary.dark,
-    color: active ? theme.palette.primary.dark : theme.palette.common.white,
-  },
 
   "&:hover": {
     cursor: "pointer",
-    backgroundColor: active ? theme.palette.secondary.main : theme.palette.primary.light,
-    color: active ? theme.palette.primary.dark : theme.palette.secondary.main,
+    backgroundColor: active ? theme.palette.primary.main : theme.palette.primary.light,
+    color: theme.palette.common.white,
     border: "none",
   },
 
   "&:active": {
     cursor: "pointer",
-    backgroundColor: active ? theme.palette.secondary.main : theme.palette.primary.light,
-    color: active ? theme.palette.primary.dark : theme.palette.secondary.main,
+    backgroundColor: active ? theme.palette.primary.main : theme.palette.primary.light,
+    color: active ? theme.palette.common.white : theme.palette.secondary.main,
     border: "none",
   },
 }));
