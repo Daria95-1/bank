@@ -1,5 +1,5 @@
 export enum RoutesConf {
-    main = "/",
+    main = "",
     sign_in = "sign-in",
     sign_up = "sign-up",
     cards = "cards",

@@ -1,13 +1,22 @@
 import type { SxProps, Theme } from '@mui/material'
 
+export const WrapperStyle: SxProps<Theme> = {
+    maxWidth: "1120px",
+    display: "flex",
+    margin: "auto",
+    padding: "0 1rem",
+};
+
 export const formWrapper: SxProps<Theme> = (theme) => ({
   width: '350px',
+  height: 'auto',
   display: 'flex',
   flexDirection: 'column',
+  justifyContent: 'center',
   alignItems: 'center',
-  padding: '20px 30px 35px',
-  borderRadius: '2px',
   backgroundColor: theme.palette.background.paper,
+  borderRadius: '2px',
+  padding: '20px 30px 35px',
 })
 
 export const title: SxProps<Theme> = {

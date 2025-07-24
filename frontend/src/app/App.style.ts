@@ -12,5 +12,6 @@ export const ContainerStyle: SxProps<Theme> = {
 export const OutletStyle: SxProps<Theme> = {
   flex: 1,
   display: 'flex',
-  alignItems: 'center',
+  // alignItems: 'center',
+  alignItems: 'stretch',
 }

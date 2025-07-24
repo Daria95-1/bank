@@ -3,7 +3,6 @@ import type { SxProps, Theme } from "@mui/material";
 export const WrapperStyle: SxProps<Theme> = {
     maxWidth: "1120px",
     display: "flex",
-    flexDirection: "row",
     alignItems: "flex-start",
     justifyContent: "flex-start",
     margin: "80px auto",

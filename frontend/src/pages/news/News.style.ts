@@ -7,5 +7,3 @@ export const containerStyle: SxProps<Theme> = {
   justifyContent: 'space-between',
   marginTop: '32px',
 };
-
-

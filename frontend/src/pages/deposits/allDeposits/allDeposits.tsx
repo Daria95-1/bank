@@ -24,14 +24,14 @@ export const AllDeposits = () => {
     };
     
     return (
-        <LayoutWrapper>
-            <DynamicTitle mainText="Вклады" />
+      <LayoutWrapper>
+          <DynamicTitle mainText="Вклады" />
 
-            <DepositNavigation onHandleChange={handleClick} />
+          <DepositNavigation onHandleChange={handleClick} />
 
-            <Deposit deposits={data} onChooseDeposit={handleGetInfo} />
+          <Deposit deposits={data} onChooseDeposit={handleGetInfo} />
                   
-            <Outlet />
+          <Outlet />
         </LayoutWrapper>
     )
 }

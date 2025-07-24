@@ -22,16 +22,16 @@ export const router = createBrowserRouter([
     element: <App />,
     children: [
       {
+        index: true,
+        element: <Main />,
+      },
+      {
         path: RoutesConf.sign_up,
         element: <Registration />,
       },
       {
         path: RoutesConf.sign_in,
         element: <Authorization />,
-      },
-      {
-        path: RoutesConf.main,
-        element: <Main />,
       },
       {
         path: RoutesConf.cards,
