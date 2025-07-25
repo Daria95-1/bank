@@ -8,8 +8,8 @@ export const ContainerStyle: SxProps<Theme> = {
 export const DepositsListStyle: SxProps<Theme> = {
     display: "flex",
     flexDirection: "column",
-    marginTop: "0.2rem",
-    gap: "1rem"
+    marginTop: "3px",
+    gap: "16px"
 };
 
 export const DepositsStyle: SxProps<Theme> = {
@@ -17,62 +17,45 @@ export const DepositsStyle: SxProps<Theme> = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    gap: "1rem"
-};
-
-export const ButtonAddStyle: SxProps<Theme> = {
-    width: "20rem",
-    fontSize: "1rem",
-    border: "none",
-    borderRadius: "0.75rem",
-    color: "var(--color-white)",
-    background: "var(--main-gradient)",
-    cursor: "pointer",
-    padding: "0.75rem 1.5rem"
-};
-
-export const BackgroundStyle: SxProps<Theme> = {
-    background: "var(--color-dark)",
-    padding: "0.5rem 1rem",
-    borderRadius: "1rem",
-    height: "13.5rem"
+    gap: "16px"
 };
 
 export const NavButtonsStyle: SxProps<Theme> = {
     display: "flex",
     flexDirection: "column",
-    color: "var(--color-white)",
-    marginTop: "1rem",
-    gap: "1rem"
+    color: theme => theme.palette.text.primary,
+    marginTop: "16px",
+    gap: "16px",
+    marginLeft: "20px",
 };
 
 export const BigButtonStyle: SxProps<Theme> = {
-    backgroundColor: "var(--color-dark)",
-    color: "var(--color-white)",
-    borderRadius: "1rem",
-    padding: "1.2rem",
+    backgroundColor: theme => theme.palette.secondary.light,
+    color: theme => theme.palette.text.primary,
+    borderRadius: "16px",
+    padding: "19px",
     textAlign: "center",
     fontWeight: 600,
-    fontSize: "1rem",
+    fontSize: "16px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    gap: "0.5rem",
+    gap: "8px",
     cursor: "pointer",
 
     "&:hover": {
-        backgroundColor: "var(--color-red)"
+        backgroundColor: theme => theme.palette.primary.main,
+        color: theme => theme.palette.background.paper
     },
-
-    svg: {
-        fontSize: "3rem"
-    }
+  svg: {
+    fontSize: "48px"
+  }
 };
 
 export const GridButtonsStyle: SxProps<Theme> = {
-    display: "grid",
-    gridTemplateColumns: "repeat(3, 1fr)",
-    gap: "1rem"
+  display: "grid",
+  gridTemplateColumns: "repeat(3, 1fr)",
+  gap: "16px"
 };
 
 export const GridButtonItemStyle: SxProps<Theme> = {
@@ -81,31 +64,43 @@ export const GridButtonItemStyle: SxProps<Theme> = {
     alignItems: "center",
     justifyContent: "center",
     textAlign: "center",
-    color: "var(--color-white)",
-    backgroundColor: "var(--color-dark)",
-    borderRadius: "1rem",
-    height: "10rem",
-    fontSize: "0.8rem",
-    padding: "0.5rem",
+    backgroundColor: theme => theme.palette.secondary.light,
+    color: theme => theme.palette.text.primary,
+    borderRadius: "16px",
+    height: "160px",
+    fontSize: "13px",
+    padding: "8px",
     cursor: "pointer",
     transition: "background-color 0.3s",
 
     "&:hover": {
-        backgroundColor: "var(--color-red)"
+        backgroundColor: theme => theme.palette.primary.main,
+        color: theme => theme.palette.background.paper
     },
 
     svg: {
-        fontSize: "3rem",
-        marginBottom: "1rem"
+        fontSize: "48px",
+        marginBottom: "16px"
     }
+};
+
+export const BackgroundStyle: SxProps<Theme> = {
+    background: theme => theme.palette.secondary.main,
+    padding: "8px 16px",
+    borderRadius: "16px",
+    height: "216px",
+    marginLeft: "10px"
 };
 
 export const ButtonBacksStyle: SxProps<Theme> = {
     display: "flex",
     alignItems: "center",
-    color: "var(--color-white)",
-    gap: "0.5rem",
+    color: theme => theme.palette.primary.main,
+    gap: "8px",
     cursor: "pointer",
-    marginTop: "3rem",
-    textDecoration: "underline"
+    marginTop: "48px",
+  
+    "&:hover": {
+        textDecoration: "underline",
+    },
 };

@@ -1,20 +1,23 @@
-import styles from "./NavButtons.module.scss";
+import { IconButton, Box } from "@mui/material"
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew"
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
+import { ContainerStyle, ButtonStyle } from "./NavButtons.style"
 
 type NavButtonsProps = {
-  onPrev: () => void;
-  onNext: () => void;
-};
+  onPrev: () => void
+  onNext: () => void
+}
 
 export const NavButtons = ({ onPrev, onNext }: NavButtonsProps) => {
   return (
-    <div className={styles.navButtons}>
-      <button className={styles.navButton} onClick={onPrev}>
-        &lt;
-      </button>
+    <Box sx={ContainerStyle}>
+      <IconButton sx={ButtonStyle} onClick={onPrev}>
+        <ArrowBackIosNewIcon fontSize="small" />
+      </IconButton>
 
-      <button className={styles.navButton} onClick={onNext}>
-        &gt;
-      </button>
-    </div>
-  );
-};
+      <IconButton sx={ButtonStyle} onClick={onNext}>
+        <ArrowForwardIosIcon fontSize="small" />
+      </IconButton>
+    </Box>
+  )
+}

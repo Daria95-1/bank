@@ -4,13 +4,12 @@ import { useNavigate } from 'react-router-dom'
 import { Formik, Form, Field, type FormikHelpers } from 'formik'
 import { TextField, Button, Typography, IconButton, InputAdornment, Box } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
-import { errorText, formWrapper, LinkStyle, title } from './Auth.style'
+import { errorText, formWrapper, LinkStyle, title, WrapperStyle } from './Auth.style'
 import { ROLE } from '@/shared/const/role'
 import { RoutesConf } from '@/app/core/enums/routes.enums'
 import { regFormSchema } from '@/app/core/schemas'
 import { selectUserRole } from '@/app/core/redux/slice/userSlice'
 import { useAuthSubmit } from '@/shared/hooks/use-auth-submit'
-import { LayoutWrapper } from '@/shared/ui/layoutWrapper/LayoutWrapper'
 
 type FormData = {
   login: string
@@ -20,31 +19,31 @@ type FormData = {
 
 export const Registration = () => {
     const navigate = useNavigate()
-  const roleId = useSelector(selectUserRole)
-  const { onSubmit, serverError, clearServerError } = useAuthSubmit(true)
+    const roleId = useSelector(selectUserRole)
+    const { onSubmit, serverError, clearServerError } = useAuthSubmit(true)
 
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+    const [showPassword, setShowPassword] = useState(false)
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
-  useEffect(() => {
-    if (roleId === ROLE.USER) {
-        navigate(`/${RoutesConf.main}`)
-    }
-  }, [roleId, navigate])
+    useEffect(() => {
+        if (roleId === ROLE.USER) {
+            navigate(`/${RoutesConf.main}`)
+        }
+    }, [roleId, navigate])
 
-  const handleFormSubmit = (
-    values: FormData,
-    formikHelpers: FormikHelpers<FormData>,
-  ) => {
-    onSubmit(values, formikHelpers.resetForm)
-    }
+    const handleFormSubmit = (
+        values: FormData,
+        formikHelpers: FormikHelpers<FormData>,
+    ) => {
+        onSubmit(values, formikHelpers.resetForm)
+        }
     
     const handleToAuth = () => {
         navigate(`/${RoutesConf.sign_in}`)
     }
 
     return (
-      <LayoutWrapper> 
+      <Box sx={WrapperStyle}> 
         <Formik
         initialValues={{ login: '', password: '', passcheck: '' }}
         validationSchema={regFormSchema}
@@ -152,6 +151,6 @@ export const Registration = () => {
             </Box>
         )}
         </Formik>
-      </LayoutWrapper>
+      </Box>
   )
 }

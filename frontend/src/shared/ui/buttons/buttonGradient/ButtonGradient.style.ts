@@ -12,6 +12,7 @@ export const ButtonStyle: SxProps<Theme> = (theme) => ({
   textTransform: 'none',
   borderRadius: "20px",
   padding: "8px 15px",
+  cursor: "pointer",
 
   '&:hover': {
     background: theme.palette.secondary.light,

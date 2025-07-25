@@ -1,11 +1,11 @@
 import { LayoutWrapper } from '@/shared/ui/layoutWrapper/LayoutWrapper'
-import ScrollableContainer from '@/shared/ui/scrollConteiner/scrolableContainer';
 import { Box } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import { Currency } from '../../const/const';
 import { ContainerStyle, ContentStyle, TextStyle } from './depositDetails.style';
 import { mockDepositsDetails } from '@/app/core/api/mocks/mockDeposits';
 import { DynamicTitle } from '@/shared/ui/dynamicTitle/DynamicTitle';
+import { ScrollabarContainer } from '@/shared/ui/scrollConteiner/ScrolabarContainer';
 
 export const DepositDetails = () => {
     const { id } = useParams();
@@ -16,7 +16,7 @@ export const DepositDetails = () => {
         <LayoutWrapper>
             <DynamicTitle mainText="Подробнее о вкладе " secondaryText={`«${deposit?.mainTitle}»`} />
 
-            <ScrollableContainer height="32rem">
+            <ScrollabarContainer height="512px">
                 <Box sx={ContainerStyle}>
                     <Box sx={ContentStyle}>
                         <Box sx={TextStyle}>Валюта</Box>
@@ -78,7 +78,7 @@ export const DepositDetails = () => {
                         <Box>{deposit?.earlyWithdrawalAllowed}</Box>
                     </Box>
                 </Box>
-            </ScrollableContainer>
+            </ScrollabarContainer>
         </LayoutWrapper>
     )
 }

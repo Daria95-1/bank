@@ -1,9 +1,9 @@
 import { DynamicTitle } from '@/shared/ui/dynamicTitle/DynamicTitle'
 import { LayoutWrapper } from '@/shared/ui/layoutWrapper/LayoutWrapper'
 import { Box } from '@mui/material'
-import { YandexMapComponent } from './map/YandexMap'
 import { bankBranches } from './const/const'
 import { branchAddressStyle, branchContactStyle, branchesListStyle, branchItemStyle, branchNameStyle, containerStyle, mapContainerStyle } from './Contacts.style'
+import YandexMapComponent from './map/YandexMap'
 
 export const Contacts = () => {
     const [mainOffice, ...otherBranches] = bankBranches;

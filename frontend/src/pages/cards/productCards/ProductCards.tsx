@@ -36,6 +36,10 @@ export const ProductCards: React.FC<ProductCardsProps> = ({ products, onChooseCa
     }
   };
 
+  const handleRedirect = () => {
+    navigate(`/${RoutesConf.under_construction}`)
+  }
+
   return (
     <>
       {products.map((item: PersonalCard) => (
@@ -64,7 +68,7 @@ export const ProductCards: React.FC<ProductCardsProps> = ({ products, onChooseCa
                 {buttonText}
               </ButtonSubmitSecondary>
 
-              <ButtonGradient to={RoutesConf.under_construction} label="Заказать карту" />
+              <ButtonGradient onClick={handleRedirect} label="Заказать карту" />
             </Box>
           </Box>
         </Box>

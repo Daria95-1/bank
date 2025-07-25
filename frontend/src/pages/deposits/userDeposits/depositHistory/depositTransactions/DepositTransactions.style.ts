@@ -3,14 +3,14 @@ import type { SxProps, Theme } from "@mui/material";
 export const OperationStyle: SxProps<Theme> = {
     display: "flex",
     flexDirection: "column",
-    color: "var(--color-white)",
-    marginTop: "1rem",
-    gap: "1rem"
+    color: theme => theme.palette.text.primary,
+    marginTop: "16px",
+    gap: "16px"
 };
 
 export const DateStyle: SxProps<Theme> = {
     fontWeight: "bold",
-    fontSize: "1.2rem"
+    fontSize: "20px"
 };
 
 export const ItemStyle: SxProps<Theme> = {
@@ -20,6 +20,6 @@ export const ItemStyle: SxProps<Theme> = {
 
 export const MoneyStyle = (isDebit: boolean): SxProps<Theme> => ({
   display: 'flex',
-  gap: '0.5rem',
-  color: isDebit ? 'var(--color-green)' : 'var(--color-red)',
+  gap: '10px',
+  color: isDebit ? theme => theme.palette.success.main : theme => theme.palette.error.main,
 });

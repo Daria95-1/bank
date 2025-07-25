@@ -1,20 +1,22 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { RoutesConf } from './core/enums/routes.enums'
-import { App } from './App'
-import { Registration } from '@/pages/auth/Registration'
-import { Authorization } from '@/pages/auth/Authorization'
-import { Main } from '@/pages/main/Main'
-import { UnderConstruction } from '@/shared/ui/underConstruction/UnderConstruction'
-import { UserDeposits } from '@/pages/deposits/userDeposits/UserDeposits'
-import { AllDeposits } from '@/pages/deposits/allDeposits/allDeposits'
-import { DepositDetails } from '@/pages/deposits/allDeposits/depositDetails/depositDetails'
-import { DepositHistory } from '@/pages/deposits/userDeposits/depositHistory/depositHistory'
-import { Cards } from '@/pages/cards/Cards'
-import { CardDescription } from '@/pages/cards/cardDescription/CardDescription'
-import { Currency } from '@/pages/currency/Currency'
-import { Contacts } from '@/pages/contacts/Contacts'
-import { News } from '@/pages/news/News'
-import { NewsDetails } from '@/pages/news/newsDetails/NewsDetails'
+import { RoutesConf } from '../core/enums/routes.enums'
+import { App } from '../App'
+import {
+  Registration,
+  Authorization,
+  Main,
+  Cards,
+  CardDescription,
+  UserDeposits,
+  AllDeposits,
+  DepositDetails,
+  DepositHistory,
+  Currency,
+  Contacts,
+  News,
+  NewsDetails,
+  UnderConstruction,
+} from './lazyRoutes'
 
 export const router = createBrowserRouter([
   {
@@ -36,13 +38,13 @@ export const router = createBrowserRouter([
       {
         path: RoutesConf.cards,
         element: <Cards />,
-        children: [{ path: "card", element: <CardDescription /> }],
+        children: [{ path: 'card', element: <CardDescription /> }],
       },
       {
         path: RoutesConf.user_deposits,
         children: [
           {
-            path: "",
+            path: '',
             element: <UserDeposits />,
           },
           {

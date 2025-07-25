@@ -1,22 +1,23 @@
-import { Box, Button, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { LayoutWrapper } from '../../../shared/ui/layoutWrapper/LayoutWrapper'
 import { EmptyContent } from '../../../shared/ui/emptyContent/EmptyContent'
-import { BackgroundStyle, ButtonAddStyle, ContainerStyle, DepositsListStyle, DepositsStyle, GridButtonItemStyle, GridButtonsStyle, NavButtonsStyle, BigButtonStyle, ButtonBacksStyle } from './UserDeposits.style'
+import { BackgroundStyle, ContainerStyle, DepositsListStyle, DepositsStyle, GridButtonItemStyle, GridButtonsStyle, NavButtonsStyle, BigButtonStyle, ButtonBacksStyle } from './UserDeposits.style'
 import { useNavigate } from 'react-router-dom'
 import { RoutesConf } from '@/app/core/enums/routes.enums'
 import { DepositItem } from './depositsItem/DepositsItem'
 import { useState } from 'react'
 import { DepositInfo } from './depositInfo/DepositInfo'
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import AutorenewIcon from '@mui/icons-material/Autorenew';
-import HistoryIcon from '@mui/icons-material/History';
-import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
-import GavelIcon from '@mui/icons-material/Gavel';
-import CloseIcon from '@mui/icons-material/Close';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined'
+import TrendingUpIcon from '@mui/icons-material/TrendingUp'
+import LoopIcon from '@mui/icons-material/Loop'
+import TimelineIcon from '@mui/icons-material/Timeline'
+import DescriptionIcon from '@mui/icons-material/Description'
+import RuleIcon from '@mui/icons-material/Rule'
+import HighlightOffIcon from '@mui/icons-material/HighlightOff'
 import { mockInfoAboutUserDeposit, mockUserDeposits } from '@/app/core/api/mocks/mockDeposits'
-import ScrollableContainer from '@/shared/ui/scrollConteiner/scrolableContainer'
 import { DynamicTitle } from '@/shared/ui/dynamicTitle/DynamicTitle'
+import { ScrollabarContainer } from '@/shared/ui/scrollConteiner/ScrolabarContainer'
+import { ButtonGradient } from '@/shared/ui/buttons/buttonGradient/ButtonGradient'
 
 export const UserDeposits = () => { 
     const navigate = useNavigate()
@@ -29,7 +30,7 @@ export const UserDeposits = () => {
      };
     
     const handleSubmit = () => {
-        navigate(`/${RoutesConf.user_deposits}/${RoutesConf.all_deposits}`);
+        navigate(`/${RoutesConf.user_deposits}/${RoutesConf.all_deposits}`)
     };
 
     const selectedDeposit = mockUserDeposits[selectedIndex];
@@ -63,7 +64,7 @@ export const UserDeposits = () => {
             ) : (
                 <Box sx={ContainerStyle}>
                     <Box sx={DepositsStyle}>
-                        <ScrollableContainer height="30rem">
+                        <ScrollabarContainer height="480px">
                                 <Box
                                     component="ul"
                                     sx={DepositsListStyle}
@@ -77,12 +78,12 @@ export const UserDeposits = () => {
                                 />
                                 ))}
                             </Box>
-                        </ScrollableContainer>
+                        </ScrollabarContainer>
                         
-                        <Button
-                            sx={ButtonAddStyle}
-                            onClick={handleSubmit}>Открыть новый вклад
-                        </Button>
+                        <ButtonGradient
+                            onClick={handleSubmit}
+                            label='Открыть новый вклад'
+                        />
                     </Box>
                     
                     {!showDetails ? (
@@ -94,41 +95,39 @@ export const UserDeposits = () => {
 
                         <Box sx={GridButtonsStyle}>
                             <Box sx={GridButtonItemStyle}>
-                                <AddCircleOutlineIcon />
-                                Пополнить вклад
+                            <TrendingUpIcon />
+                            Пополнить вклад
                             </Box>
-                                    
+
                             <Box sx={GridButtonItemStyle}>
-                                <AutorenewIcon />
-                                Автопродление вклада
-                                    </Box>
-                                    
+                            <LoopIcon />
+                            Автопродление вклада
+                            </Box>
+
                             <Box sx={GridButtonItemStyle} onClick={handleToDepositHistory}>
-                                <HistoryIcon />
-                                        
-                                История операций
+                            <TimelineIcon />
+                            История операций
                             </Box>
-                                    
+
                             <Box sx={GridButtonItemStyle}>
-                                <ReceiptLongIcon />
-                                Выписка
+                            <DescriptionIcon />
+                            Выписка
                             </Box>
-                                    
+
                             <Box sx={GridButtonItemStyle}>
-                                <GavelIcon />
-                                Условия
+                            <RuleIcon />
+                            Условия
                             </Box>
-                                    
+
                             <Box sx={GridButtonItemStyle}>
-                                <CloseIcon />
-                                Закрыть вклад
+                            <HighlightOffIcon />
+                            Закрыть вклад
                             </Box>
                         </Box>
-                    </Box>
+                        </Box>
             ) : (
                 <Box sx={BackgroundStyle}>
-
-                    <DynamicTitle mainText="Информация " secondaryText="по вкладу" style={{ fontSize: '2rem' }} />
+                    <DynamicTitle mainText="Информация по вкладу" style={{ fontSize: '30px' }} />
 
                     <DepositInfo
                         selectedDepositInfo={selectedDepositInfo}

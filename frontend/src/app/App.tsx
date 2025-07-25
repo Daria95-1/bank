@@ -6,8 +6,9 @@ import { ErrorBoundary, type FallbackProps } from 'react-error-boundary';
 import { Header } from '@/widgets/header/Header'
 import { Footer } from '@/widgets/footer/Footer'
 import { Outlet } from 'react-router-dom'
-import { Box, Typography } from '@mui/material'
-import { ContainerStyle, OutletStyle } from './App.style'
+import { Suspense } from 'react'
+import { Box, CircularProgress, Typography } from '@mui/material'
+import { ContainerStyle, LoaderStyle, OutletStyle } from './App.style'
 
 const FallbackUI: React.FC<FallbackProps> = ({ error, resetErrorBoundary }) => (
   <Box>
@@ -41,18 +42,23 @@ export const App = () => {
   }, [dispatch])
 
   return (
-    <>
-      <ErrorBoundary FallbackComponent={FallbackUI}>
-        <Box sx={ContainerStyle}>
-          <Header />
-          
+    <ErrorBoundary FallbackComponent={FallbackUI}>
+      <Box sx={ContainerStyle}>
+        <Header />
+
+        <Suspense fallback={
+            <Box sx={LoaderStyle}>
+              <CircularProgress color="primary" />
+            </Box>
+          }
+        >
           <Box sx={OutletStyle}>
             <Outlet />
           </Box>
+        </Suspense>
 
-          <Footer />
-        </Box>
+        <Footer />
+      </Box>
     </ErrorBoundary>
-    </>
   )
 }

@@ -12,6 +12,13 @@ export const ContainerStyle: SxProps<Theme> = {
 export const OutletStyle: SxProps<Theme> = {
   flex: 1,
   display: 'flex',
-  // alignItems: 'center',
   alignItems: 'stretch',
+}
+
+export const LoaderStyle: SxProps<Theme> = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexGrow: 1,
+  minHeight: '300px',
 }
