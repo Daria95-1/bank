@@ -1,13 +1,14 @@
 import type { SxProps, Theme } from "@mui/material";
 
-export const sectionStyle: SxProps<Theme> = {
+export const sectionStyle: SxProps<Theme> = (theme) => ({
+  width: "500px",
   display: "flex",
   justifyContent: "left",
   justifySelf: "left",
-  width: "23rem",
-  backgroundColor: "var(--color-main-dark)",
+  backgroundColor: theme.palette.background.default,
   border: "none",
-  borderRadius: "6.25rem",
-  margin: "3rem 0",
-  gap: "1rem",
-};
+  borderRadius: "100px",
+  whiteSpace: "nowrap",
+  margin: "10px 0",
+  gap: "10px",
+});

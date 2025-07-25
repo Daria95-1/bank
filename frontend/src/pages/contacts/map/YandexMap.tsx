@@ -1,7 +1,7 @@
 import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
 import type { BranchesProps } from '../const/const';
 
-export const YandexMapComponent = ({ data }: { data: BranchesProps[] }) => {
+const YandexMapComponent = ({ data }: { data: BranchesProps[] }) => {
   return (
     <YMaps>
       <Map defaultState={{ center: [55.75, 37.57], zoom: 12 }} width="inherit" height="inherit">
@@ -12,3 +12,5 @@ export const YandexMapComponent = ({ data }: { data: BranchesProps[] }) => {
     </YMaps>
   );
 };
+
+export default YandexMapComponent;

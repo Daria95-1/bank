@@ -1,22 +1,48 @@
-import styles from "./CustomCalendar.module.scss";
 import { useState } from "react";
 import { CustomSelect } from "./CustomSelect/CustomSelect";
 import { NavButtons } from "./NavButtons/NavButtons";
-import { DAYS_OF_WEEK, MONTH_OPTIONS, YEAR_OPTIONS, MONTHS } from './const/const'
+import { DAYS_OF_WEEK, MONTH_OPTIONS, YEAR_OPTIONS, MONTHS } from './const/const';
+import {
+  Box,
+  Typography,
+  IconButton,
+  type SxProps,
+  type Theme
+} from "@mui/material";
+import CloseIcon from '@mui/icons-material/Close';
+
+import {
+  ContainerStyle,
+  HeadersStyle,
+  SelectDateStyle,
+  CurrentDateStyle,
+  SeparatorStyle,
+  DateAndArrowsStyle,
+  WeekdaysStyle,
+  WeekdayStyle,
+  DaysStyle,
+  DayStyle,
+  SelectedDayStyle,
+  MonthYearDropdownStyle,
+  SelectedStyle,
+  CloseStyle,
+  CloseIconStyle,
+} from "./CustomCalendar.style";
 
 type CustomCalendarProps = {
   onSelectDate: (date: Date) => void;
+  initialDate?: Date;
+  onClose?: () => void; // 👈 для крестика
 };
 
-export const CustomCalendar = ({ onSelectDate }: CustomCalendarProps) => {
-  const [currentDate, setCurrentDate] = useState<Date>(new Date());
+export const CustomCalendar = ({ onSelectDate, initialDate, onClose }: CustomCalendarProps) => {
+  const [currentDate, setCurrentDate] = useState<Date>(initialDate ?? new Date());
   const [selectedDay, setSelectedDay] = useState<number | null>(currentDate.getDate());
 
   const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).getDay();
   const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
   const formattedDate = `${DAYS_OF_WEEK[currentDate.getDay()]}, ${currentDate.getDate()} ${MONTHS[currentDate.getMonth()].slice(0, 3).toLowerCase()}`;
 
-  // --- Переменные для рендера ---
   const selectedMonth = MONTHS[currentDate.getMonth()];
   const selectedYear = currentDate.getFullYear().toString();
 
@@ -51,59 +77,70 @@ export const CustomCalendar = ({ onSelectDate }: CustomCalendarProps) => {
   };
 
   const emptyDays = Array.from({ length: firstDayOfMonth }).map((_, i) => (
-    <div key={`empty-${i}`} className={styles.empty}></div>
+    <Box key={`empty-${i}`} />
   ));
 
   const days = Array.from({ length: daysInMonth }, (_, i) => {
     const day = i + 1;
-    const isSelected = selectedDay === day;
 
     return (
-      <div
+      <Box
         key={day}
-        className={`${styles.day} ${isSelected ? styles.selected : ""}`}
+        sx={
+          [DayStyle, selectedDay === day && SelectedDayStyle]
+            .filter(Boolean) as SxProps<Theme>
+        }
         onClick={() => handleDayClick(day)}
       >
         {day}
-      </div>
+      </Box>
     );
   });
 
   const weekdayHeaders = DAYS_OF_WEEK.map((day, index) => (
-    <div key={index} className={styles.weekday}>
+    <Typography key={index} sx={WeekdayStyle}>
       {day}
-    </div>
+    </Typography>
   ));
 
   return (
-    <div className={styles.calendar}>
-      <div className={styles.headers}>
-        <div className={styles.selectDate}>Выберите дату</div>
+    <Box sx={ContainerStyle}>
+      <Box sx={HeadersStyle}>
+        <Box sx={CloseStyle}>
+          <Typography sx={SelectDateStyle}>Выберите дату</Typography>
+          {onClose && (
+            <IconButton sx={CloseIconStyle} onClick={onClose}>
+              <CloseIcon />
+            </IconButton>
+          )}
+        </Box>
+        <Typography sx={CurrentDateStyle}>{formattedDate}</Typography>
+        <Box sx={SeparatorStyle} />
+      </Box>
 
-        <div className={styles.currentDate}>{formattedDate}</div>
-
-        <div className={styles.separator}></div>
-      </div>
-
-      <div className={styles.dateAndArrows}>
-        <div className={styles.monthYearSelector}>
-          <div className={styles.monthYearDropdown}>
-            <CustomSelect value={selectedMonth} options={MONTH_OPTIONS} onChange={handleMonthSelect} />
-
-            <CustomSelect value={selectedYear} options={YEAR_OPTIONS} onChange={handleYearSelect} />
-          </div>
-        </div>
-
+      <Box sx={DateAndArrowsStyle}>
+        <Box sx={MonthYearDropdownStyle}>
+          <CustomSelect
+            sx={SelectedStyle}
+            value={selectedMonth}
+            options={MONTH_OPTIONS}
+            onChange={handleMonthSelect}
+          />
+          <CustomSelect
+            value={selectedYear}
+            options={YEAR_OPTIONS}
+            onChange={handleYearSelect}
+          />
+        </Box>
         <NavButtons onPrev={() => handleChangeMonth(-1)} onNext={() => handleChangeMonth(1)} />
-      </div>
+      </Box>
 
-      <div className={styles.weekdays}>{weekdayHeaders}</div>
+      <Box sx={WeekdaysStyle}>{weekdayHeaders}</Box>
 
-      <div className={styles.days}>
+      <Box sx={DaysStyle}>
         {emptyDays}
-
         {days}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };

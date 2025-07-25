@@ -1,7 +1,7 @@
 import { Container, Box } from "@mui/material";
-import ScrollableContainer from "../../../shared/ui/scrollConteiner/scrolableContainer";
 import { containerStyle, itemStyle, blockQuestionStyle, questionStyle, answerStyle } from "./CardDescription.style";
 import { dataInfoProduct, mockProductInfo } from '@/app/core/api/mocks/mockCreditCardProducts';
+import { ScrollabarContainer } from '@/shared/ui/scrollConteiner/ScrolabarContainer';
 
 export const CardDescription: React.FC = () => {
   if (!dataInfoProduct || dataInfoProduct.length === 0) return <Box>Нет доступных данных</Box>;
@@ -16,7 +16,7 @@ export const CardDescription: React.FC = () => {
         ))}
       </Box>
 
-      <ScrollableContainer>
+      <ScrollabarContainer>
         <Box >
           {mockProductInfo.map((item) => (
             <Box key={item.id} sx={blockQuestionStyle}>
@@ -26,7 +26,7 @@ export const CardDescription: React.FC = () => {
             </Box>
           ))}
         </Box>
-      </ScrollableContainer>
+      </ScrollabarContainer>
     </Container>
   );
 };

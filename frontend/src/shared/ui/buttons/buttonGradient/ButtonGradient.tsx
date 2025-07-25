@@ -1,20 +1,19 @@
 import { Box } from '@mui/material'
-import { NavLink } from 'react-router-dom'
 import { ButtonStyle } from './ButtonGradient.style'
 
 interface ButtonGradientProps {
-  to: string
   label: string
   width?: string
+  onClick: () => void
 }
 
-export const ButtonGradient = ({ to, label, width }: ButtonGradientProps) => {
+export const ButtonGradient = ({ label, width, onClick }: ButtonGradientProps) => {
   return (
     <Box
-      component={NavLink}
-      to={to}
+      onClick={onClick}
       width={width}
       sx={ButtonStyle}
+      role="button"
     >
       {label}
     </Box>

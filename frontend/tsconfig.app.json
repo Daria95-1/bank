@@ -27,8 +27,8 @@
       "@/*": ["./src/*"],
       "@core/*": ["src/app/core/*"],
       "@pages/*": ["src/pages/*"],
-      "@shared/*": ["src/shared*"],
-      "@widgets/*": ["src/widgets/*"],
+      "@shared/*": ["src/shared/*"],
+      "@widgets/*": ["src/widgets/*"]
     },
     "types": ["vite/client", "react", "react-dom"]
   },

@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { AccountTypeStyle, AmountStyle, ContainerStyle, ContentStyle, ItemStyle, NameStyle, SelectedStyle } from './DepositsItem.style';
+import { AccountTypeStyle, AmountStyle, ContainerStyle, ContentStyle, ItemStyle, NameStyle, getSelectedStyle } from './DepositsItem.style';
 
 export type DepositsItem = {
   name: string;
@@ -18,10 +18,10 @@ type Props = {
 export const DepositItem: React.FC<Props> = ({ item, selected, onClick }) => {
   return (
     <Box
-      sx={{
-        ...(ItemStyle as object),
-        ...(selected ? (SelectedStyle as object) : {}),
-      }}
+      sx={(theme) => ({
+        ...ItemStyle,
+        ...(selected ? getSelectedStyle(theme) : {}),
+      })}
       onClick={onClick}>
       <Typography sx={NameStyle}>{item.name}</Typography>
 

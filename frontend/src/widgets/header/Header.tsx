@@ -72,6 +72,10 @@ export const Header = () => {
     navigate(route);
   };
 
+  const handleRedirect = () => {
+    navigate(`/${RoutesConf.sign_in}`)
+  }
+
   return (
     <Box component="header" sx={HeaderBoxStyle}>
       <Box sx={HeaderContainerStyle}>
@@ -115,7 +119,7 @@ export const Header = () => {
               </Menu>
             </>
           ) : (
-              <ButtonGradient to={RoutesConf.sign_in} label="Войти" />
+              <ButtonGradient onClick={handleRedirect} label="Войти" />
           )}
         </Box>
       </Box>

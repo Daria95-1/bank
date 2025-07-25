@@ -30,7 +30,7 @@ export const sessionsApi = createApi({
       }),
       invalidatesTags: ['Sessions'],
     }),
-    deleteSession: builder.mutation<void, number>({
+    deleteSession: builder.mutation<void, number | string | null>({
       query: (id) => ({
         url: `sessions/${id}`,
         method: 'DELETE',

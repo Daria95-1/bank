@@ -18,8 +18,6 @@ import { ROLE } from '@/shared/const/role'
 import { selectUserRole } from '@/app/core/redux/slice/userSlice'
 import { useAuthSubmit } from '@/shared/hooks/use-auth-submit'
 
-// json-server --watch src/db.json --port 3000
-
 type FormData = {
   login: string
   password: string
